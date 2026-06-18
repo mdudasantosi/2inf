@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,11 +21,13 @@ public class AlunoController {
 
     }
     @PostMapping("/salvar")
-    public String salvarAluno(Aluno aluno){
+    public String salvarAluno(@ModelAttribute("aluno") Aluno aluno){
         System.out.println(aluno.getNumero());
         System.out.println(aluno.getNome());
         System.out.println(aluno.getSexo());
-        return "cadastro";
+        System.out.println(aluno.getMatricula());
+        System.out.println(aluno.getCpf());
+        return "redirect:/";
     }
 
 }
